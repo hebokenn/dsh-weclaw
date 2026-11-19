@@ -1,0 +1,47 @@
+{
+  "name": "dsh-weclaw",
+  "version": "0.1.0",
+  "description": "把企业微信「大圆」客户端的本地模型网关（mTLS，127.0.0.1:9883）以 OpenAI 兼容端点形式接入 DeepSeek Harness：随插件起停本地明文代理，并自动声明 weclaw provider。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "wecom",
+    "企业微信",
+    "大圆",
+    "openai-compatible",
+    "llm"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "icon": "./icon.svg",
+  "files": [
+    "lib",
+    "locale",
+    "docs",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "ELECTRON_RUN_AS_NODE=1 node lib/weclaw-proxy.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hebokenn/dsh-weclaw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hebokenn/dsh-weclaw/issues"
+  },
+  "homepage": "https://github.com/hebokenn/dsh-weclaw#readme",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "license": "MIT"
+}

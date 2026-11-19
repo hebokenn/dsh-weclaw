@@ -1,0 +1,55 @@
+# ============================================================================
+# dsh-weclaw —— DSH bundle patch
+# ============================================================================
+# 两层声明，DSH 启动时按 bundle 层栈叠加：
+#
+#   1) weclaw-proxy : 本插件自己的 host 条目，负责拉起/复用本地明文代理
+#                     （127.0.0.1:9885 → 企微 mTLS 网关 127.0.0.1:9883）。
+#   2) weclaw-llm   : 一条独立的 llm-pi-ai 实例，只声明 weclaw 这一个 provider。
+#                     用独立 id 是为了不动官方 llm-pi-ai 条目里已有的 providers
+#                     （重复声明同一 provider 会触发 DUPLICATE_DIRECTORY）。
+#
+# 安装：
+#   dsh plugin --profile desktop add dsh-weclaw
+# 本地开发：
+#   dsh plugin --profile desktop add link:<本目录绝对路径>
+#
+# ⚠ 如果你的 profile 里已经手工配过 baseURL 指向 127.0.0.1:9885 的 weclaw
+#   provider，请先删掉那段，否则 provider 重复声明会让 host 启动失败。
+# ============================================================================
+
+- insert:
+    - id: weclaw-proxy
+      name: dsh-weclaw
+
+    - id: weclaw-llm
+      name: '@deepseek-ai/dsh-llm-pi-ai'
+      config:
+        providers:
+          weclaw:
+            displayName: 企业微信大圆
+            api: openai-completions
+            baseURL: http://127.0.0.1:9885/v1
+            # 代理不校验凭据；给一个 authorization 占位值，避免适配器报 "No API key"。
+            headers:
+              authorization: Bearer weclaw-local
+            defaultContextWindow: 128000
+            defaultMaxTokens: 20000
+            # 该端点 reasoning 占比很高，放宽空闲超时，避免长思考被判超时。
+            streamIdleTimeoutMs: 600000
+            compat:
+              thinkingFormat: deepseek
+            models:
+              - id: DeepSeek-V4.1-Flash-Agent-P800
+                name: 大圆 · DeepSeek-V4.1-Flash
+                contextWindow: 128000
+                maxTokens: 20000
+                reasoningEfforts:
+                  low: low
+                  medium: medium
+                  high: high
+              - id: HY-vision-1.5-instruct
+                name: 大圆 · HY-Vision（图文）
+                contextWindow: 65536
+                maxTokens: 8192
+                input: ["text", "image"]

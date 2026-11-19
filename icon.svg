@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="dsh-weclaw">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b2a4a"/>
+      <stop offset="1" stop-color="#0d1626"/>
+    </linearGradient>
+    <linearGradient id="bubble" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6fa8ff"/>
+      <stop offset="1" stop-color="#3d6fe0"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <path d="M30 34h68a10 10 0 0 1 10 10v34a10 10 0 0 1-10 10H64L44 102V88H30a10 10 0 0 1-10-10V44a10 10 0 0 1 10-10z" fill="url(#bubble)"/>
+  <path d="M64 50a9 9 0 0 0-9 9c0 6 9 15 9 15s9-9 9-15a9 9 0 0 0-9-9zm0 5.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z" fill="#0d1626" opacity=".9"/>
+  <circle cx="98" cy="34" r="12" fill="#7ee0b8"/>
+  <path d="M98 28.5a4 4 0 0 0-4 4v2.2h8v-2.2a4 4 0 0 0-4-4zm-5.5 8h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 91 44v-6a1.5 1.5 0 0 1 1.5-1.5z" fill="#0d1626" opacity=".85"/>
+</svg>

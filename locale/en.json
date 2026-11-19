@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "WeCom Dayuan",
+    "description": "Use the model quota of the WeCom \"Dayuan\" desktop client inside DeepSeek Harness.",
+    "detail": "## WeCom Dayuan\n\nThe Dayuan client runs a local model gateway (127.0.0.1:9883) that only accepts an mTLS client certificate. DSH model adapters cannot present one, so this plugin starts and stops a local plain-HTTP bridge (127.0.0.1:9885) with the host: the bridge reads the certificate from the environment of the running `wecom-agent` process, re-originates the request over mTLS, and declares a `weclaw` provider for the model picker.\n\n- The certificate stays in memory, refreshed every five minutes, never written to disk.\n- The Dayuan client must be running; once it exits the bridge reports the upstream as unavailable on the next request.\n- Upstream models wired up so far: `MiniMax-M2.5-WW-128K-Test` (text) and `HY-vision-1.5-instruct` (text + images)."
+  }
+}
