@@ -25,7 +25,7 @@ a Dayuan restart that rotates it needs no DSH restart.
 ## Install
 
 ```sh
-dsh plugin --profile desktop add dsh-weclaw
+dsh plugin --profile desktop add "github:hebokenn/dsh-weclaw"
 ```
 
 For local development, link a checkout directly:
@@ -36,9 +36,9 @@ dsh plugin --profile desktop add link:/path/to/dsh-weclaw
 
 Then pick a "WeCom Dayuan · …" model in the model picker.
 
-> If you previously hand-configured a `weclaw` provider pointing at `127.0.0.1:9885` in your
-> profile patch, delete that block first — a duplicate provider declaration stops the host from
-> booting.
+> The plugin appends the `weclaw` provider by overriding the stock `llm-pi-ai` entry (deep merge
+> keeps the built-in providers). If you previously hand-configured the same `weclaw` provider in
+> your profile patch, you can delete that block — keeping it is merely redundant.
 
 ## Upstream models wired up
 

@@ -22,7 +22,7 @@ DSH 的模型适配器出示不了客户端证书，握手会失败。本插件�
 ## 安装
 
 ```sh
-dsh plugin --profile desktop add dsh-weclaw
+dsh plugin --profile desktop add "github:hebokenn/dsh-weclaw"
 ```
 
 本地开发用 checkout 直接链进去：
@@ -33,8 +33,8 @@ dsh plugin --profile desktop add link:/path/to/dsh-weclaw
 
 装好后在模型选择页选「企业微信大圆 · …」。
 
-> 如果之前手工在 profile patch 里配过指向 `127.0.0.1:9885` 的 `weclaw` provider，请先删掉
-> 那一段——provider 重复声明会让宿主启动失败。
+> 插件是通过覆盖官方 `llm-pi-ai` 条目来追加 `weclaw` provider 的（内置 provider 由深合并保留）。
+> 如果之前手工在 profile patch 里配过同样的 `weclaw` provider，删掉那段即可，留着只是重复。
 
 ## 已适配的上游模型
 

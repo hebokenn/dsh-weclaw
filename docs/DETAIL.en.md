@@ -56,8 +56,9 @@ Configuration of the `weclaw-proxy` entry (all optional):
 1. Start the Dayuan client and sign in.
 2. Install this plugin.
 3. Pick a "WeCom Dayuan · …" model.
-4. If you previously hand-configured a `weclaw` provider pointing at `127.0.0.1:9885`, delete it
-   first — a duplicate provider declaration stops the host from booting.
+4. The plugin appends the `weclaw` provider by overriding the stock `llm-pi-ai` entry; built-in
+   providers survive the deep merge. A previously hand-configured copy can be deleted (harmless,
+   just redundant).
 
 ## Limitations
 
