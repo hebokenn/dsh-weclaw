@@ -36,6 +36,15 @@ dsh plugin --profile desktop add link:/path/to/dsh-weclaw
 
 Then pick a "WeCom Dayuan · …" model in the model picker.
 
+To make Dayuan the default model, add this to the profile's `cordis.patch.yml`:
+
+```yaml
+- id: agent-default-model
+  config:
+    provider: weclaw
+    model: DeepSeek-V4.1-Flash-Agent-P800
+```
+
 > The plugin appends the `weclaw` provider by overriding the stock `llm-pi-ai` entry (deep merge
 > keeps the built-in providers). If you previously hand-configured the same `weclaw` provider in
 > your profile patch, you can delete that block — keeping it is merely redundant.

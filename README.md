@@ -33,6 +33,15 @@ dsh plugin --profile desktop add link:/path/to/dsh-weclaw
 
 装好后在模型选择页选「企业微信大圆 · …」。
 
+想让大圆成为默认模型，在 profile 的 `cordis.patch.yml` 里加一条：
+
+```yaml
+- id: agent-default-model
+  config:
+    provider: weclaw
+    model: DeepSeek-V4.1-Flash-Agent-P800
+```
+
 > 插件是通过覆盖官方 `llm-pi-ai` 条目来追加 `weclaw` provider 的（内置 provider 由深合并保留）。
 > 如果之前手工在 profile patch 里配过同样的 `weclaw` provider，删掉那段即可，留着只是重复。
 
